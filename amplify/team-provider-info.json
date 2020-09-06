@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-boardgameledger-dev-120923-authRole",
+      "UnauthRoleArn": "arn:aws:iam::359278527500:role/amplify-boardgameledger-dev-120923-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::359278527500:role/amplify-boardgameledger-dev-120923-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-boardgameledger-dev-120923-deployment",
+      "UnauthRoleName": "amplify-boardgameledger-dev-120923-unauthRole",
+      "StackName": "amplify-boardgameledger-dev-120923",
+      "StackId": "arn:aws:cloudformation:us-east-2:359278527500:stack/amplify-boardgameledger-dev-120923/55a1f8f0-f05b-11ea-bac5-0a52864e0d06",
+      "AmplifyAppId": "d1itwhb1rxmytd"
+    }
+  }
+}
