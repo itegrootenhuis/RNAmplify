@@ -4,16 +4,11 @@
 
 export type CreateGameInput = {
   id?: string | null,
-  gameName: GameNameInput,
+  name: string,
   players: Array< PlayerInput | null >,
   winner: PlayerInput,
   score?: number | null,
   note?: string | null,
-};
-
-export type GameNameInput = {
-  id: string,
-  name: string,
 };
 
 export type PlayerInput = {
@@ -22,38 +17,13 @@ export type PlayerInput = {
 };
 
 export type ModelGameConditionInput = {
+  name?: ModelStringInput | null,
   score?: ModelIntInput | null,
   note?: ModelStringInput | null,
   and?: Array< ModelGameConditionInput | null > | null,
   or?: Array< ModelGameConditionInput | null > | null,
   not?: ModelGameConditionInput | null,
 };
-
-export type ModelIntInput = {
-  ne?: number | null,
-  eq?: number | null,
-  le?: number | null,
-  lt?: number | null,
-  ge?: number | null,
-  gt?: number | null,
-  between?: Array< number | null > | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
-};
-
-export enum ModelAttributeTypes {
-  binary = "binary",
-  binarySet = "binarySet",
-  bool = "bool",
-  list = "list",
-  map = "map",
-  number = "number",
-  numberSet = "numberSet",
-  string = "string",
-  stringSet = "stringSet",
-  _null = "_null",
-}
-
 
 export type ModelStringInput = {
   ne?: string | null,
@@ -71,6 +41,20 @@ export type ModelStringInput = {
   size?: ModelSizeInput | null,
 };
 
+export enum ModelAttributeTypes {
+  binary = "binary",
+  binarySet = "binarySet",
+  bool = "bool",
+  list = "list",
+  map = "map",
+  number = "number",
+  numberSet = "numberSet",
+  string = "string",
+  stringSet = "stringSet",
+  _null = "_null",
+}
+
+
 export type ModelSizeInput = {
   ne?: number | null,
   eq?: number | null,
@@ -81,9 +65,21 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
+export type ModelIntInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+};
+
 export type UpdateGameInput = {
   id: string,
-  gameName?: GameNameInput | null,
+  name?: string | null,
   players?: Array< PlayerInput | null > | null,
   winner?: PlayerInput | null,
   score?: number | null,
@@ -96,6 +92,7 @@ export type DeleteGameInput = {
 
 export type ModelGameFilterInput = {
   id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
   score?: ModelIntInput | null,
   note?: ModelStringInput | null,
   and?: Array< ModelGameFilterInput | null > | null,
@@ -128,11 +125,7 @@ export type CreateGameMutation = {
   createGame:  {
     __typename: "Game",
     id: string,
-    gameName:  {
-      __typename: "GameName",
-      id: string,
-      name: string,
-    },
+    name: string,
     players:  Array< {
       __typename: "Player",
       id: string,
@@ -159,11 +152,7 @@ export type UpdateGameMutation = {
   updateGame:  {
     __typename: "Game",
     id: string,
-    gameName:  {
-      __typename: "GameName",
-      id: string,
-      name: string,
-    },
+    name: string,
     players:  Array< {
       __typename: "Player",
       id: string,
@@ -190,11 +179,7 @@ export type DeleteGameMutation = {
   deleteGame:  {
     __typename: "Game",
     id: string,
-    gameName:  {
-      __typename: "GameName",
-      id: string,
-      name: string,
-    },
+    name: string,
     players:  Array< {
       __typename: "Player",
       id: string,
@@ -220,11 +205,7 @@ export type GetGameQuery = {
   getGame:  {
     __typename: "Game",
     id: string,
-    gameName:  {
-      __typename: "GameName",
-      id: string,
-      name: string,
-    },
+    name: string,
     players:  Array< {
       __typename: "Player",
       id: string,
@@ -254,11 +235,7 @@ export type ListGamesQuery = {
     items:  Array< {
       __typename: "Game",
       id: string,
-      gameName:  {
-        __typename: "GameName",
-        id: string,
-        name: string,
-      },
+      name: string,
       players:  Array< {
         __typename: "Player",
         id: string,
@@ -282,11 +259,7 @@ export type OnCreateGameSubscription = {
   onCreateGame:  {
     __typename: "Game",
     id: string,
-    gameName:  {
-      __typename: "GameName",
-      id: string,
-      name: string,
-    },
+    name: string,
     players:  Array< {
       __typename: "Player",
       id: string,
@@ -308,11 +281,7 @@ export type OnUpdateGameSubscription = {
   onUpdateGame:  {
     __typename: "Game",
     id: string,
-    gameName:  {
-      __typename: "GameName",
-      id: string,
-      name: string,
-    },
+    name: string,
     players:  Array< {
       __typename: "Player",
       id: string,
@@ -334,11 +303,7 @@ export type OnDeleteGameSubscription = {
   onDeleteGame:  {
     __typename: "Game",
     id: string,
-    gameName:  {
-      __typename: "GameName",
-      id: string,
-      name: string,
-    },
+    name: string,
     players:  Array< {
       __typename: "Player",
       id: string,

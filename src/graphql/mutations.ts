@@ -9,10 +9,7 @@ export const createGame = /* GraphQL */ `
   ) {
     createGame(input: $input, condition: $condition) {
       id
-      gameName {
-        id
-        name
-      }
+      name
       players {
         id
         name
@@ -35,10 +32,7 @@ export const updateGame = /* GraphQL */ `
   ) {
     updateGame(input: $input, condition: $condition) {
       id
-      gameName {
-        id
-        name
-      }
+      name
       players {
         id
         name
@@ -61,10 +55,7 @@ export const deleteGame = /* GraphQL */ `
   ) {
     deleteGame(input: $input, condition: $condition) {
       id
-      gameName {
-        id
-        name
-      }
+      name
       players {
         id
         name

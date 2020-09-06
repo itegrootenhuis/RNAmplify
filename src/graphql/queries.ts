@@ -6,10 +6,7 @@ export const getGame = /* GraphQL */ `
   query GetGame($id: ID!) {
     getGame(id: $id) {
       id
-      gameName {
-        id
-        name
-      }
+      name
       players {
         id
         name
@@ -34,10 +31,7 @@ export const listGames = /* GraphQL */ `
     listGames(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        gameName {
-          id
-          name
-        }
+        name
         players {
           id
           name
