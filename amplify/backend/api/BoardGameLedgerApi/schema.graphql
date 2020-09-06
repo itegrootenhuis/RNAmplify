@@ -1,0 +1,16 @@
+type Game @model {
+  id: ID!
+  gameName: GameName!
+  players: [Player]!
+  winner: Player!
+  score: Int
+  note: String
+}
+type Player {
+  id: ID!
+  name: String!
+}
+type GameName {
+  id: ID!
+  name: String!
+}
