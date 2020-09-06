@@ -10,6 +10,11 @@
       "StackName": "amplify-boardgameledger-dev-120923",
       "StackId": "arn:aws:cloudformation:us-east-2:359278527500:stack/amplify-boardgameledger-dev-120923/55a1f8f0-f05b-11ea-bac5-0a52864e0d06",
       "AmplifyAppId": "d1itwhb1rxmytd"
+    },
+    "categories": {
+      "auth": {
+        "boardgameledger95ca6888": {}
+      }
     }
   }
 }
