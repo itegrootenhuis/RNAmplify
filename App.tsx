@@ -8,7 +8,8 @@ import { listGames } from "./src/graphql/queries";
 import config from "./aws-exports";
 Amplify.configure(config);
 
-const initialState = { name: "" };
+const initialState = { name: "", players: [], winner: "" };
+const logger = new Logger("DEV: ");
 
 const App = () => {
   const [formState, setFormState] = useState(initialState);
@@ -18,7 +19,11 @@ const App = () => {
     fetchGames();
   }, []);
 
-  function setInput(key: number, value: String) {
+  function setInput(key: string, value: String) {
+    setFormState({ ...formState, [key]: value });
+  }
+
+  function setPlayerInput(key: string, value: []) {
     setFormState({ ...formState, [key]: value });
   }
 
@@ -35,9 +40,11 @@ const App = () => {
   async function addGame() {
     try {
       const game = { ...formState };
+      console.log(game);
       setGames([...games, game]);
       setFormState(initialState);
       await API.graphql(graphqlOperation(createGame, { input: game }));
+      console.log("there");
     } catch (err) {
       console.log("error creating game:", err);
     }
@@ -49,12 +56,26 @@ const App = () => {
         onChangeText={(val) => setInput("name", val)}
         style={styles.input}
         value={formState.name}
-        placeholder="Name"
+        placeholder="Game Name"
       />
-      <Button title="Create Game" onPress={addGame} />
+      <TextInput
+        onChangeText={(val) => setInput("players", val)}
+        style={styles.input}
+        value={formState.players}
+        placeholder="Player Name"
+      />
+      <Button title="Add Player" onPress={addPlayer} />
+      <TextInput
+        onChangeText={(val) => setInput("winner", val)}
+        style={styles.input}
+        value={formState.winner}
+        placeholder="Winner"
+      />
+      <Button title="Save Game" onPress={addGame} />
       {games.map((game, index) => (
         <View key={game.id ? game.id : index} style={styles.game}>
           <Text style={styles.gameName}>{game.name}</Text>
+          <Text style={styles.gameName}>{game.score}</Text>
         </View>
       ))}
     </View>
