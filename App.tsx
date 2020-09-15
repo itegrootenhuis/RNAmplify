@@ -8,18 +8,17 @@ import { listGames } from "./src/graphql/queries";
 import config from "./aws-exports";
 Amplify.configure(config);
 
-const initialState = { name: "", players: [], winner: "" };
-const logger = new Logger("DEV: ");
+const initialState = { name: "", winner: "" };
 
 const App = () => {
   const [formState, setFormState] = useState(initialState);
-  const [games, setGames] = useState([]);
+  const [games, setGames] = useState<any[]>([]);
 
   useEffect(() => {
     fetchGames();
   }, []);
 
-  function setInput(key: string, value: String) {
+  function setInput(key: string, value: string) {
     setFormState({ ...formState, [key]: value });
   }
 
@@ -44,7 +43,7 @@ const App = () => {
       setGames([...games, game]);
       setFormState(initialState);
       await API.graphql(graphqlOperation(createGame, { input: game }));
-      console.log("there");
+      console.log("SAVED TO DATABASE");
     } catch (err) {
       console.log("error creating game:", err);
     }
@@ -59,13 +58,6 @@ const App = () => {
         placeholder="Game Name"
       />
       <TextInput
-        onChangeText={(val) => setInput("players", val)}
-        style={styles.input}
-        value={formState.players}
-        placeholder="Player Name"
-      />
-      <Button title="Add Player" onPress={addPlayer} />
-      <TextInput
         onChangeText={(val) => setInput("winner", val)}
         style={styles.input}
         value={formState.winner}
@@ -75,7 +67,7 @@ const App = () => {
       {games.map((game, index) => (
         <View key={game.id ? game.id : index} style={styles.game}>
           <Text style={styles.gameName}>{game.name}</Text>
-          <Text style={styles.gameName}>{game.score}</Text>
+          <Text style={styles.gameName}>{game.winner}</Text>
         </View>
       ))}
     </View>

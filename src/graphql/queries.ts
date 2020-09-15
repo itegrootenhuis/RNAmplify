@@ -7,14 +7,8 @@ export const getGame = /* GraphQL */ `
     getGame(id: $id) {
       id
       name
-      players {
-        id
-        name
-      }
-      winner {
-        id
-        name
-      }
+      players
+      winner
       score
       note
       createdAt
@@ -32,14 +26,8 @@ export const listGames = /* GraphQL */ `
       items {
         id
         name
-        players {
-          id
-          name
-        }
-        winner {
-          id
-          name
-        }
+        players
+        winner
         score
         note
         createdAt

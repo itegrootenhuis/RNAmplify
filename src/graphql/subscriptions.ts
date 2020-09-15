@@ -7,14 +7,8 @@ export const onCreateGame = /* GraphQL */ `
     onCreateGame {
       id
       name
-      players {
-        id
-        name
-      }
-      winner {
-        id
-        name
-      }
+      players
+      winner
       score
       note
       createdAt
@@ -27,14 +21,8 @@ export const onUpdateGame = /* GraphQL */ `
     onUpdateGame {
       id
       name
-      players {
-        id
-        name
-      }
-      winner {
-        id
-        name
-      }
+      players
+      winner
       score
       note
       createdAt
@@ -47,14 +35,8 @@ export const onDeleteGame = /* GraphQL */ `
     onDeleteGame {
       id
       name
-      players {
-        id
-        name
-      }
-      winner {
-        id
-        name
-      }
+      players
+      winner
       score
       note
       createdAt

@@ -1,12 +1,8 @@
 type Game @model {
   id: ID!
   name: String!
-  players: [Player]!
-  winner: Player!
+  players: [String]
+  winner: String
   score: Int
   note: String
-}
-type Player {
-  id: ID!
-  name: String!
 }
